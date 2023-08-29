@@ -51,11 +51,11 @@ router.get('/posts',  async(req, res, next) => {
   });
 
 /* 게시글 상세 조회 */
-router.get('/posts/:postId', async(req, res, next) => {
+router.get('/posts/:_postId', async(req, res, next) => {
 
-    const {postId} = req.params;
+    const {_postId} = req.params;
 
-    const cheak1post = await Schemapost.findById(postId).exec();
+    const cheak1post = await Schemapost.findById(_postId).exec();
 
     if(!cheak1post){
         return res.status(400).json({Massage : '데이터 형식이 올바르지 않습니다.'})
@@ -72,12 +72,12 @@ router.get('/posts/:postId', async(req, res, next) => {
 })
 
 /* 게시글 수정 */
-router.put('/posts/:postId', async(req, res, next) => {
-    const {postId} = req.params;
+router.put('/posts/:_postId', async(req, res, next) => {
+    const {_postId} = req.params;
     const {password , title, content} = req.body;
 
 
-    const editpost = await Schemapost.findById(postId).exec();
+    const editpost = await Schemapost.findById(_postId).exec();
 
     /* 에러 */
  
@@ -105,13 +105,13 @@ router.put('/posts/:postId', async(req, res, next) => {
 });
 
 /* 게시글 삭제 */
-router.delete('/posts/:postId', async(req,res,next)=>{
-    const {postId} = req.params;
+router.delete('/posts/:_postId', async(req,res,next)=>{
+    const {_postId} = req.params;
     const {password} = req.body;
 
     
 
-    const  deletepost = await Schemapost.findById(postId).exec();
+    const  deletepost = await Schemapost.findById(_postId).exec();
     
     /* 에러 */
     
@@ -124,7 +124,7 @@ router.delete('/posts/:postId', async(req,res,next)=>{
     }
     
 
-    await deletepost.deleteOne({password: postId});
+    await deletepost.deleteOne({password: _postId});
     
 
     return res.status(200).json({message : '게시글을 삭제하였습니다.'});
