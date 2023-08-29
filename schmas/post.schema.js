@@ -21,21 +21,9 @@ const postSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date, // createAt 필드는 Date 타입을 가집니다.
-    required: false, 
+    required: true, 
   },
 });
 
 
-
-// 프론트엔드 서빙을 위한 코드입니다. 모르셔도 괜찮아요!
-postSchema.virtual("postId").get(function () {
-  return this._id.toHexString();
-});
-postSchema.set("toJSON", {
-  virtuals: true,
-});
-
-
-
-// postSchema를 바탕으로 post모델을 생성하여, 외부로 내보냅니다.
 export default mongoose.model("Schemapost", postSchema);
