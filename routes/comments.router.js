@@ -63,12 +63,8 @@ return res.status(200).json({ mapCheakcomment });
 
 
 
-
-
-
 /* 댓글 수정 */
-// 왜 댓글에서는 _ 를 붙여야 작동하는가?
-// 포스트에서는 멀쩡하게 됏는데?
+
 router.put('/posts/:_postId/comments/:_commentId', async(req,res,next)=>{
     const {_commentId} = req.params;
     const {password , content} = req.body
