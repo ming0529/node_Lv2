@@ -36,7 +36,7 @@ try{
 
 
     res.status(201).json({message:'댓글을 생성하였습니다.'})
-}catch{
+}catch(err){
     console.error(err);
     return res.status(400).json({message : '데이터 형식이 올바르지 않습니다.'})  
 }
@@ -62,8 +62,9 @@ router.get('/post/:_postId/comments', async(req, res, next) =>{
 
         }));
         
-        return res.status(200).json({ mapCheakcomment });
-    }catch{
+        return res.status(200).json( mapCheakcomment );
+
+    }catch(err){
         console.error(err);
         return res.status(400).send({message : '데이터 형식이 올바르지 않습니다.'})  
     }
@@ -98,7 +99,7 @@ router.put('/posts/:_postId/comments/:_commentId', async(req,res,next)=>{
         await editcomment.save();
         
         return res.status(200).json({massege: '댓글이 수정되었습니다.'})
-    }catch{
+    }catch(err){
         console.error(err);
         return res.status(400).send({message : '데이터 형식이 올바르지 않습니다.'}) 
     }
@@ -131,7 +132,7 @@ try{
 
     return res.status(200).json({message : '댓글을 삭제하였습니다.'});
 
-}catch{
+}catch(err){
     console.error(err);
         return res.status(400).send({message : '데이터 형식이 올바르지 않습니다.'}) 
 }

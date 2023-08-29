@@ -22,7 +22,7 @@ try{
     })
     await newPost.save();
     res.status(201).json({message:'개시글을 생성하였습니다'})
-}catch{
+}catch(err){
     console.error(err);
     return res.status(400).json({message : '데이터 형식이 올바르지 않습니다.'})
 }
@@ -35,7 +35,6 @@ try{
 router.get('/posts',  async(req, res, next) => {
 
     const cheakpost = await Schemapost.find().sort({createdAt : -1}).exec();
-
 
     const mapCheakpost = cheakpost.map(post =>({
         postId :post._id,  // _id 를 postId로 변경
@@ -66,7 +65,7 @@ try{
 
     return res.status(201).json({mapCheak1post});
 
-} catch{
+} catch(err){
     console.error(err);
     return res.status(400).json({message : '데이터 형식이 올바르지 않습니다.'})
 }
@@ -98,9 +97,8 @@ router.put('/posts/:_postId', async(req, res, next) => {
         await editpost.save();
         
     
-        return res.status(200).json({massege: '게시글이 수정되었습니다.'})
-    } catch{
-               
+        return res.status(200).json({message: '게시글이 수정되었습니다.'})
+    } catch(err){    
         console.error(err);
         return res.status(400).json({message : '데이터 형식이 올바르지 않습니다.'})
 
@@ -134,7 +132,7 @@ router.delete('/posts/:_postId', async(req,res,next)=>{
     
         return res.status(200).json({message : '게시글을 삭제하였습니다.'});
     
-    } catch{
+    } catch(err){
         console.error(err);
         return res.status(400).json({message : '데이터 형식이 올바르지 않습니다.'})
         
