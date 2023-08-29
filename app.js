@@ -4,7 +4,7 @@ import connect from './schmas/index.js'
 import postRouter from './routes/post.router.js'
 import commnetRouter from './routes/comments.router.js'
 const app = express();
-const PORT = 80;
+const PORT = 3000;
 
 connect();
 
