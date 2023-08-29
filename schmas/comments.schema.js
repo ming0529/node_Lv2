@@ -4,6 +4,10 @@ import mongoose from "mongoose";
 
 
 const commentSchema = new mongoose.Schema({
+  postId: {
+    type: String,
+    required: true, // 필수요소
+  },
   user: {
     type: String,
     required: true, // 필수요소
