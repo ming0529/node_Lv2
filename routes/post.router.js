@@ -1,4 +1,3 @@
-// /routes/post.router.js
 
 import express from 'express';
 import Schemapost from '../schmas/post.schema.js'
@@ -12,10 +11,6 @@ const router = express.Router();
 router.post('/posts', async(req,res, next) =>{
 try{
     const {title, user, password , content } = req.body
-    
-    if(!user || !password || !title || !content){
-        return res.status(400).json({ Message : '데이터 형식이 올바르지 않습니다.'})
-    }
     
     const newPost = new Schemapost({
         user,
