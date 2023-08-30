@@ -1,6 +1,5 @@
 
 import express from 'express';
-import schemaPost from '../schmas/post.schema.js'
 import schemaComment from '../schmas/comments.schema.js'
 
 
@@ -12,7 +11,7 @@ const router = express.Router();
 
 /* 댓글 생성 API */
 
-router.post('/post/:_postId/comments', async(req,res,next) =>{
+router.post('/posts/:_postId/comments', async(req,res,next) =>{
 try{
     const {_postId} =req.params
     const { password, user, content } = req.body
@@ -46,7 +45,7 @@ try{
 
 /* 댓글 목록 조회 */
 
-router.get('/post/:_postId/comments', async(req, res, next) =>{
+router.get('/posts/:_postId/comments', async(req, res, next) =>{
     try{
 
         const cheakcomment = await schemaComment.find().sort({createdAt : -1}).exec(); 

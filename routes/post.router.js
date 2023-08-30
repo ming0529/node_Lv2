@@ -28,7 +28,7 @@ try{
 }
 
     
-}) 
+}); 
 
 
 /* 게시판 목록 조회 */
@@ -105,9 +105,6 @@ router.put('/posts/:_postId', async(req, res, next) => {
             
 
     }
-    
-
-
 
 });
 
@@ -137,8 +134,6 @@ router.delete('/posts/:_postId', async(req,res,next)=>{
         return res.status(400).json({message : '데이터 형식이 올바르지 않습니다.'})
         
     }
-    
-
 
 });
 
