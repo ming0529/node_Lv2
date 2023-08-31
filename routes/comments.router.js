@@ -14,6 +14,7 @@ const router = express.Router();
 router.post('/posts/:_postId/comments', async(req,res,next) =>{
 try{
     const {_postId} =req.params
+    //console.log(_postId);
     const { password, user, content } = req.body
 
     if(!content){

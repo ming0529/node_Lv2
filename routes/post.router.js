@@ -5,12 +5,12 @@ const router = express.Router();
 
 
 
-
 /* 게시판 등록  API*/
 
 router.post('/posts', async(req,res, next) =>{
 try{
     const {title, user, password , content } = req.body
+    
     
     const newPost = new Schemapost({
         user,
@@ -37,7 +37,7 @@ router.get('/posts',  async(req, res, next) => {
     const cheakpost = await Schemapost.find().sort({createdAt : -1}).exec();
 
     const mapCheakpost = cheakpost.map(post =>({
-        postId :post._id,  // _id 를 postId로 변경
+        postId :post._id,  // _id 를 postId로 변경 _id 
         user: post.user,
         title : post.title,
         createdAt: post.createdAt

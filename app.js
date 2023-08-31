@@ -1,8 +1,8 @@
 import express from 'express';
 import connect from './schmas/index.js'
-import postRouter from './routes/post.router.js'
-import commnetRouter from './routes/comments.router.js'
-// import routes from './routes/index.js'
+// import postRouter from './routes/post.router.js'
+// import commnetRouter from './routes/comments.router.js'
+import routes from './routes/index.js'
 const app = express();
 const PORT = 3000;
 
@@ -10,7 +10,7 @@ connect();
 
 
 
-const router = express.Router();
+// const router = express.Router();
 
 
 
@@ -18,18 +18,12 @@ const router = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(routes.commnetRouter);
-// app.use(routes.postRouter);
+// app.use('/api', routes.commnetRouter);
+// app.use('/api',routes.postRouter);
 
 
-router.get('/', (req, res) => {
-  return res.json({ message: '서버에 연결 되었습니다.' });
-});
+app.use('/api', [routes.commnetRouter, routes.postRouter]);
 
-
-app.use('/api', [router, postRouter ,commnetRouter]);
-//routes
-//postRouter,commnetRouter
 app.listen(PORT, () => {
   console.log(PORT, '포트로 서버가 열렸어요!');
 });
