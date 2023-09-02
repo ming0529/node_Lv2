@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "type" : "module",
+  "type": "module",
   "scripts": {
     "dev": "nodemon app.js"
   },
@@ -14,5 +14,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
-  }
+  },
+  "repository": "https://github.com/HeeDragoN1123/nodejs-post.git",
+  "author": "서민정 <121smmmj@gmail.com>"
 }
